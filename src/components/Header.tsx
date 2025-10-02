@@ -13,11 +13,6 @@ const Header = () => {
       items: ["Class Types", "Instructors", "Music"]
     },
     {
-      label: "THE COMMUNITY",
-      hasDropdown: true,
-      items: ["Events", "Challenges", "Social"]
-    },
-    {
       label: "OUR STUDIOS",
       hasDropdown: true,
       items: ["Find a Studio", "Studio Amenities"]
@@ -82,20 +77,14 @@ const Header = () => {
             </div>
 
             {/* Right Side Buttons */}
-            <div className="hidden lg:flex items-center gap-4">
-              <a href="#" className="text-sm font-bold tracking-wider hover:text-primary transition-colors">
-                BLAZEHOUSE
-              </a>
-              <a href="#" className="text-sm font-bold tracking-wider hover:text-primary transition-colors">
-                SHOP
-              </a>
+            <div className="hidden lg:flex items-center gap-3">
               <a href="#" className="text-sm font-bold tracking-wider hover:text-primary transition-colors">
                 MY ACCOUNT
               </a>
-              <button className="border-2 border-foreground px-6 py-2 font-bold text-sm tracking-wider hover:bg-foreground hover:text-background transition-all">
+              <button className="border-2 border-foreground px-5 py-2 font-bold text-sm tracking-wider hover:bg-foreground hover:text-background transition-all">
                 BOOK NOW
               </button>
-              <button className="bg-foreground text-background px-6 py-2 font-bold text-sm tracking-wider hover:bg-primary hover:border-primary border-2 border-foreground transition-all">
+              <button className="bg-foreground text-background px-5 py-2 font-bold text-sm tracking-wider hover:bg-primary hover:border-primary border-2 border-foreground transition-all">
                 BUY CLASSES
               </button>
             </div>
