@@ -85,9 +85,9 @@ const Header = () => {
               <Link to="/book-now" className="border-2 border-foreground px-5 py-2 font-bold text-sm tracking-wider hover:bg-foreground hover:text-background transition-all inline-flex items-center justify-center">
                 BOOK NOW
               </Link>
-              <button className="bg-foreground text-background px-5 py-2 font-bold text-sm tracking-wider hover:bg-primary hover:border-primary border-2 border-foreground transition-all">
+              <Link to="/buy-classes" className="bg-foreground text-background px-5 py-2 font-bold text-sm tracking-wider hover:bg-primary hover:border-primary border-2 border-foreground transition-all inline-flex items-center justify-center">
                 BUY CLASSES
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -124,9 +124,9 @@ const Header = () => {
                 <Link to="/book-now" className="border-2 border-foreground px-6 py-2 font-bold text-sm tracking-wider text-center">
                   BOOK NOW
                 </Link>
-                <button className="bg-foreground text-background px-6 py-2 font-bold text-sm tracking-wider">
+                <Link to="/buy-classes" className="bg-foreground text-background px-6 py-2 font-bold text-sm tracking-wider text-center">
                   BUY CLASSES
-                </button>
+                </Link>
               </div>
             </nav>
           </div>
