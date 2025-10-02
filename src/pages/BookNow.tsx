@@ -164,19 +164,19 @@ const BookNow = () => {
       <section className="bg-white text-black py-12 px-8 md:px-16 lg:px-24">
         {/* Studio Header with Filters */}
         <div className="max-w-7xl mx-auto mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+          <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-8">
             <h2 className="text-4xl md:text-5xl font-bold">Downtown Studio</h2>
-            <div className="flex items-center gap-3">
-              <button className="px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <button className="px-4 sm:px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors whitespace-nowrap">
                 Instructor
               </button>
-              <button className="px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors">
+              <button className="px-4 sm:px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors whitespace-nowrap">
                 Class Type
               </button>
-              <button className="px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors">
+              <button className="px-4 sm:px-6 py-2 border-2 border-black text-sm font-medium hover:bg-black hover:text-white transition-colors whitespace-nowrap">
                 Rooms
               </button>
-              <button className="text-sm underline hover:no-underline ml-2">
+              <button className="text-sm underline hover:no-underline ml-2 whitespace-nowrap">
                 Clear All
               </button>
             </div>
