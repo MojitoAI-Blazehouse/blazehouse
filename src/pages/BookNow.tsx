@@ -191,21 +191,21 @@ const BookNow = () => {
               <ChevronLeft className="w-8 h-8" />
             </button>
             
-            <div className="flex gap-2 md:gap-8 flex-1 justify-center">
+            <div className="flex gap-1 sm:gap-3 lg:gap-8 flex-1 justify-center overflow-x-auto">
               {weekDays.map((day, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedDate(day.date)}
-                  className={`flex flex-col items-center py-4 px-4 md:px-8 transition-all ${
+                  className={`flex flex-col items-center py-4 px-2 sm:px-4 lg:px-8 transition-all whitespace-nowrap ${
                     selectedDayIndex === index
                       ? "border-b-4 border-black"
                       : "border-b-4 border-transparent hover:border-gray-300"
                   }`}
                 >
-                  <span className="text-xs md:text-sm text-gray-500 mb-1">
+                  <span className="text-xs lg:text-sm text-gray-500 mb-1">
                     {day.label || day.dateStr}
                   </span>
-                  <span className={`text-xl md:text-2xl font-bold ${
+                  <span className={`text-lg sm:text-xl lg:text-2xl font-bold ${
                     selectedDayIndex === index ? "text-black" : "text-gray-400"
                   }`}>
                     {day.day}

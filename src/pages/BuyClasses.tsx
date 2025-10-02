@@ -44,7 +44,7 @@ const BuyClasses = () => {
         />
         <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
           <p className="text-white text-sm font-bold tracking-wider mb-4">
-            PHOENIX, ARIZONA
+            LOS ANGELES, CALIFORNIA
           </p>
           <h1 className="text-white text-7xl md:text-8xl font-black tracking-tight">
             PRICING
@@ -58,7 +58,7 @@ const BuyClasses = () => {
           {/* Sidebar */}
           <aside className="lg:sticky lg:top-24 h-fit">
             <p className="text-sm text-muted-foreground mb-2">Purchase Classes for</p>
-            <h2 className="text-3xl font-black mb-8">Phoenix Downtown</h2>
+            <h2 className="text-3xl font-black mb-8">Los Angeles Downtown</h2>
             
             <nav className="space-y-1">
               {categories.map((category) => (
@@ -91,12 +91,12 @@ const BuyClasses = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     $45 First Timer 3 Pack + FREE Fuel Item - website
                   </p>
-                  <div className="flex items-end gap-8 mb-4">
+                  <div className="flex items-baseline gap-8 mb-4">
                     <div className="flex items-baseline">
                       <span className="text-6xl font-black">$45</span>
                       <span className="text-2xl text-muted-foreground">.00</span>
                     </div>
-                    <div className="flex items-baseline pb-2">
+                    <div className="flex items-baseline">
                       <span className="text-6xl font-black">3</span>
                       <span className="text-lg text-muted-foreground ml-2">classes</span>
                     </div>
@@ -117,23 +117,23 @@ const BuyClasses = () => {
                 {/* 1 Class */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX SINGLE CLASS
+                    LOS ANGELES SINGLE CLASS
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown - 1 Class</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown - 1 Class</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$29</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">1</span>
                         <span className="text-sm text-muted-foreground ml-2">class</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix Downtown credits are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles Downtown credits are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -141,23 +141,23 @@ const BuyClasses = () => {
                 {/* 5 Classes */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX CLASS PACKAGE
+                    LOS ANGELES CLASS PACKAGE
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown - 5 Classes</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown - 5 Classes</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$140</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">5</span>
                         <span className="text-sm text-muted-foreground ml-2">classes</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix Downtown credits are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles Downtown credits are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -165,23 +165,23 @@ const BuyClasses = () => {
                 {/* 10 Classes */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX CLASS PACKAGE
+                    LOS ANGELES CLASS PACKAGE
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown - 10 Classes</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown - 10 Classes</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$270</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">10</span>
                         <span className="text-sm text-muted-foreground ml-2">classes</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix Downtown credits are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles Downtown credits are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -189,23 +189,23 @@ const BuyClasses = () => {
                 {/* 20 Classes */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX CLASS PACKAGE
+                    LOS ANGELES CLASS PACKAGE
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown - 20 Classes</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown - 20 Classes</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$520</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">20</span>
                         <span className="text-sm text-muted-foreground ml-2">classes</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix Downtown credits are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles Downtown credits are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -213,23 +213,23 @@ const BuyClasses = () => {
                 {/* 50 Classes */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX CLASS PACKAGE
+                    LOS ANGELES CLASS PACKAGE
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown - 50 Classes</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown - 50 Classes</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$1,225</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">50</span>
                         <span className="text-sm text-muted-foreground ml-2">classes</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix Downtown credits are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles Downtown credits are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -244,23 +244,23 @@ const BuyClasses = () => {
                 {/* 8 Classes/Month */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX MEMBERSHIP
+                    LOS ANGELES MEMBERSHIP
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown 8 Classes/Month Recurring Membership</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown 8 Classes/Month Recurring Membership</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$170</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">8</span>
                         <span className="text-sm text-muted-foreground ml-2">per<br/>month</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix memberships are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles memberships are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -268,23 +268,23 @@ const BuyClasses = () => {
                 {/* 12 Classes/Month */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX MEMBERSHIP
+                    LOS ANGELES MEMBERSHIP
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown 12 Classes/Month Recurring Membership</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown 12 Classes/Month Recurring Membership</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$235</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">12</span>
                         <span className="text-sm text-muted-foreground ml-2">per<br/>month</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix memberships are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles memberships are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -292,23 +292,23 @@ const BuyClasses = () => {
                 {/* 16 Classes/Month */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX MEMBERSHIP
+                    LOS ANGELES MEMBERSHIP
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown 16 Classes/Month Recurring Membership</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown 16 Classes/Month Recurring Membership</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$265</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">16</span>
                         <span className="text-sm text-muted-foreground ml-2">per<br/>month</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix memberships are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles memberships are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
@@ -316,23 +316,23 @@ const BuyClasses = () => {
                 {/* 30 Classes/Month */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
-                    PHOENIX MEMBERSHIP
+                    LOS ANGELES MEMBERSHIP
                   </div>
                   <div className="p-6">
-                    <p className="font-bold mb-4">Phoenix Downtown 30 Classes/Month Recurring Membership</p>
-                    <div className="flex items-end gap-6 mb-4">
+                    <p className="font-bold mb-4">Los Angeles Downtown 30 Classes/Month Recurring Membership</p>
+                    <div className="flex items-baseline gap-6 mb-4">
                       <div className="flex items-baseline">
                         <span className="text-5xl font-black">$335</span>
                         <span className="text-xl text-muted-foreground">.00</span>
                       </div>
-                      <div className="flex items-baseline pb-1">
+                      <div className="flex items-baseline">
                         <span className="text-5xl font-black">30</span>
                         <span className="text-sm text-muted-foreground ml-2">for<br/>30 days</span>
                       </div>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      Phoenix memberships are also valid in the following regions: Scottsdale, 
-                      Mesa, Tempe, Chandler, Tucson...
+                      Los Angeles memberships are also valid in the following regions: Santa Monica, 
+                      Beverly Hills, Pasadena, Long Beach, Burbank...
                     </p>
                   </div>
                 </div>
