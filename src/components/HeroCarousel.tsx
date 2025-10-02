@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
@@ -10,21 +11,24 @@ const slides = [
     tag: "THE CHALLENGE IS OFFICIALLY ON",
     title: "LET'S MAKE IT A HIIT",
     description: "Take 10 or 20 classes, or set your own Red Room record. Push play on your next breakthrough and earn rewards.",
-    cta: "SIGN UP NOW"
+    cta: "SIGN UP NOW",
+    link: "/book-now"
   },
   {
     image: hero2,
     tag: "BURN. BUILD. TRANSFORM.",
     title: "YOUR INTENSITY. YOUR RESULTS.",
     description: "Alternate between treadmill sprints and floor strength blocks. Every class is designed to push your limits.",
-    cta: "EXPLORE CLASSES"
+    cta: "EXPLORE CLASSES",
+    link: "/buy-classes"
   },
   {
     image: hero3,
     tag: "JOIN THE MOVEMENT",
     title: "REDEFINE YOUR LIMITS",
     description: "High-intensity training that adapts to you. Choose your challenge, track your progress, level up your fitness.",
-    cta: "GET STARTED"
+    cta: "GET STARTED",
+    link: "/book-now"
   }
 ];
 
@@ -79,9 +83,12 @@ const HeroCarousel = () => {
               <p className="text-lg md:text-xl mb-10 max-w-xl text-foreground/90 animate-fade-in">
                 {slide.description}
               </p>
-              <button className="bg-foreground text-background px-12 py-4 font-bold text-sm tracking-widest hover:bg-primary transition-all animate-fade-in">
+              <Link 
+                to={slide.link} 
+                className="bg-foreground text-background px-12 py-4 font-bold text-sm tracking-widest hover:bg-primary transition-all animate-fade-in inline-block"
+              >
                 {slide.cta}
-              </button>
+              </Link>
             </div>
           </div>
 
