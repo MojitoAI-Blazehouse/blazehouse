@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { addDays, startOfWeek, format, isToday, isSameDay } from "date-fns";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/book-now-hero.jpg";
@@ -18,111 +19,124 @@ interface ClassSession {
   room: string;
 }
 
-const mockClasses: ClassSession[] = [
-  {
-    id: "1",
-    time: "5:10 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Jordan K.",
-    instructorImage: instructor1,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "2",
-    time: "6:15 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Jordan K.",
-    instructorImage: instructor1,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "3",
-    time: "7:25 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Marcus T.",
-    instructorImage: instructor2,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "4",
-    time: "8:35 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Marcus T.",
-    instructorImage: instructor2,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "5",
-    time: "9:45 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "HUSTLE x TONE: Core & Conditioning (50 min)",
-    instructor: "Riley H.",
-    instructorImage: instructor3,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "6",
-    time: "11:00 AM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "HUSTLE x TONE: Core & Conditioning (50 min)",
-    instructor: "Riley H.",
-    instructorImage: instructor3,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "7",
-    time: "12:15 PM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Jordan K.",
-    instructorImage: instructor1,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "8",
-    time: "5:30 PM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "HUSTLE x TONE: Core & Conditioning (50 min)",
-    instructor: "Marcus T.",
-    instructorImage: instructor2,
-    room: "Downtown Red Room"
-  },
-  {
-    id: "9",
-    time: "6:45 PM",
-    duration: "50 min.",
-    location: "Downtown Studio",
-    className: "POWER x BURN: Full Body Blast (50 min)",
-    instructor: "Riley H.",
-    instructorImage: instructor3,
-    room: "Downtown Red Room"
-  }
-];
-
-const weekDays = [
-  { date: "Sep 29", day: "MON", isToday: false },
-  { date: "Sep 30", day: "TUE", isToday: false },
-  { date: "Oct 1", day: "WED", isToday: false },
-  { date: "Oct 2", day: "THU", isToday: true, label: "Today" },
-  { date: "Oct 3", day: "FRI", isToday: false },
-  { date: "Oct 4", day: "SAT", isToday: false },
-  { date: "Oct 5", day: "SUN", isToday: false }
-];
+// Generate schedules for each day of the week
+const generateScheduleForDay = (dayOfWeek: number): ClassSession[] => {
+  const schedules: Record<number, ClassSession[]> = {
+    0: [ // Sunday
+      { id: "sun1", time: "8:00 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "sun2", time: "9:30 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "sun3", time: "11:00 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "sun4", time: "12:30 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "sun5", time: "4:00 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+    ],
+    1: [ // Monday
+      { id: "mon1", time: "5:10 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "mon2", time: "6:15 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "mon3", time: "7:25 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "mon4", time: "8:35 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "mon5", time: "9:45 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "mon6", time: "11:00 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "mon7", time: "12:15 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "mon8", time: "5:30 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "mon9", time: "6:45 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+    ],
+    2: [ // Tuesday
+      { id: "tue1", time: "5:15 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "tue2", time: "6:20 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "tue3", time: "7:30 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "tue4", time: "9:00 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "tue5", time: "10:30 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "tue6", time: "12:00 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "tue7", time: "5:45 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "tue8", time: "7:00 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+    ],
+    3: [ // Wednesday
+      { id: "wed1", time: "5:10 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "wed2", time: "6:25 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "wed3", time: "7:35 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "wed4", time: "8:45 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "wed5", time: "10:00 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "wed6", time: "11:30 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "wed7", time: "5:15 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "wed8", time: "6:30 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "wed9", time: "7:45 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+    ],
+    4: [ // Thursday
+      { id: "thu1", time: "5:20 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "thu2", time: "6:30 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "thu3", time: "7:40 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "thu4", time: "9:00 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "thu5", time: "10:15 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "thu6", time: "12:00 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "thu7", time: "5:30 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "thu8", time: "6:45 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+    ],
+    5: [ // Friday
+      { id: "fri1", time: "5:10 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "fri2", time: "6:15 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "fri3", time: "7:25 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "fri4", time: "8:35 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "fri5", time: "9:50 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "fri6", time: "11:15 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "fri7", time: "5:00 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "fri8", time: "6:15 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "fri9", time: "7:30 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+    ],
+    6: [ // Saturday
+      { id: "sat1", time: "7:00 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "sat2", time: "8:30 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "sat3", time: "10:00 AM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+      { id: "sat4", time: "11:30 AM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Jordan K.", instructorImage: instructor1, room: "Downtown Red Room" },
+      { id: "sat5", time: "1:00 PM", duration: "50 min.", location: "Downtown Studio", className: "POWER x BURN: Full Body Blast (50 min)", instructor: "Marcus T.", instructorImage: instructor2, room: "Downtown Red Room" },
+      { id: "sat6", time: "4:30 PM", duration: "50 min.", location: "Downtown Studio", className: "HUSTLE x TONE: Core & Conditioning (50 min)", instructor: "Riley H.", instructorImage: instructor3, room: "Downtown Red Room" },
+    ],
+  };
+  
+  return schedules[dayOfWeek] || schedules[1];
+};
 
 const BookNow = () => {
-  const [selectedDay, setSelectedDay] = useState(3);
+  const today = new Date();
+  const [weekStartDate, setWeekStartDate] = useState(() => startOfWeek(today, { weekStartsOn: 1 }));
+  const [selectedDate, setSelectedDate] = useState(today);
+
+  // Generate week days based on current week
+  const weekDays = useMemo(() => {
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = addDays(weekStartDate, i);
+      return {
+        date,
+        dateStr: format(date, "MMM d"),
+        day: format(date, "EEE").toUpperCase(),
+        isToday: isToday(date),
+        label: isToday(date) ? "Today" : undefined,
+      };
+    });
+  }, [weekStartDate]);
+
+  // Get current selected day index
+  const selectedDayIndex = useMemo(() => {
+    return weekDays.findIndex(day => isSameDay(day.date, selectedDate));
+  }, [weekDays, selectedDate]);
+
+  // Get classes for selected day
+  const currentClasses = useMemo(() => {
+    return generateScheduleForDay(selectedDate.getDay());
+  }, [selectedDate]);
+
+  const handlePreviousWeek = () => {
+    setWeekStartDate(prev => addDays(prev, -7));
+  };
+
+  const handleNextWeek = () => {
+    setWeekStartDate(prev => addDays(prev, 7));
+  };
+
+  const handleTodayClick = () => {
+    const newWeekStart = startOfWeek(today, { weekStartsOn: 1 });
+    setWeekStartDate(newWeekStart);
+    setSelectedDate(today);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -170,7 +184,10 @@ const BookNow = () => {
 
           {/* Week Calendar */}
           <div className="flex items-center justify-between mb-8 border-b border-gray-200">
-            <button className="p-2 hover:bg-gray-100 rounded transition-colors">
+            <button 
+              onClick={handlePreviousWeek}
+              className="p-2 hover:bg-gray-100 rounded transition-colors"
+            >
               <ChevronLeft className="w-8 h-8" />
             </button>
             
@@ -178,18 +195,18 @@ const BookNow = () => {
               {weekDays.map((day, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedDay(index)}
+                  onClick={() => setSelectedDate(day.date)}
                   className={`flex flex-col items-center py-4 px-4 md:px-8 transition-all ${
-                    selectedDay === index
+                    selectedDayIndex === index
                       ? "border-b-4 border-black"
                       : "border-b-4 border-transparent hover:border-gray-300"
                   }`}
                 >
                   <span className="text-xs md:text-sm text-gray-500 mb-1">
-                    {day.label || day.date}
+                    {day.label || day.dateStr}
                   </span>
                   <span className={`text-xl md:text-2xl font-bold ${
-                    selectedDay === index ? "text-black" : "text-gray-400"
+                    selectedDayIndex === index ? "text-black" : "text-gray-400"
                   }`}>
                     {day.day}
                   </span>
@@ -197,26 +214,32 @@ const BookNow = () => {
               ))}
             </div>
 
-            <button className="p-2 hover:bg-gray-100 rounded transition-colors">
+            <button 
+              onClick={handleNextWeek}
+              className="p-2 hover:bg-gray-100 rounded transition-colors"
+            >
               <ChevronRight className="w-8 h-8" />
             </button>
           </div>
 
           {/* Current Date Display */}
           <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
-            <h3 className="text-lg font-bold">Thursday, October 2, 2025</h3>
-            <button className="text-sm underline hover:no-underline">
+            <h3 className="text-lg font-bold">{format(selectedDate, "EEEE, MMMM d, yyyy")}</h3>
+            <button 
+              onClick={handleTodayClick}
+              className="text-sm underline hover:no-underline"
+            >
               Today
             </button>
           </div>
 
           {/* Class Schedule List */}
           <div className="space-y-0">
-            {mockClasses.map((classSession, index) => (
+            {currentClasses.map((classSession, index) => (
               <div 
                 key={classSession.id}
                 className={`flex items-center justify-between py-6 ${
-                  index !== mockClasses.length - 1 ? "border-b border-gray-200" : ""
+                  index !== currentClasses.length - 1 ? "border-b border-gray-200" : ""
                 }`}
               >
                 {/* Time and Location */}

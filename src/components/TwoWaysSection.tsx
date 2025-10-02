@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import inStudio from "@/assets/in-studio.jpg";
 import appWorkout from "@/assets/app-workout.jpg";
 import { Dumbbell, Smartphone } from "lucide-react";
@@ -34,9 +35,11 @@ const TwoWaysSection = () => {
                 </div>
                 <h3 className="text-3xl font-black mb-2">IN-STUDIO</h3>
                 <p className="text-lg mb-6">The Original HIIT Experience</p>
-                <button className="bg-foreground text-background px-8 py-3 font-bold text-sm tracking-wider hover:bg-primary transition-all">
-                  BOOK NOW
-                </button>
+                <Link to="/book-now">
+                  <button className="bg-foreground text-background px-8 py-3 font-bold text-sm tracking-wider hover:bg-primary transition-all">
+                    BOOK NOW
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
