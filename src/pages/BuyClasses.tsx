@@ -113,7 +113,7 @@ const BuyClasses = () => {
             <section id="packages" className="mb-16 scroll-mt-24">
               <h2 className="text-3xl font-black mb-8">Class Packages</h2>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {/* 1 Class */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
@@ -240,7 +240,7 @@ const BuyClasses = () => {
             <section id="memberships" className="mb-16 scroll-mt-24">
               <h2 className="text-3xl font-black mb-8">Memberships</h2>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {/* 8 Classes/Month */}
                 <div className="bg-card border border-border overflow-hidden">
                   <div className="bg-primary text-white px-6 py-3 font-bold text-sm tracking-wider">
