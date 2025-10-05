@@ -1,4 +1,5 @@
 import community from "@/assets/community-real.jpg";
+import { MojitoVariant } from '@mojito-ai/react';
 
 const JoinTheHustle = () => {
   return (
@@ -16,21 +17,23 @@ const JoinTheHustle = () => {
 
           {/* Content */}
           <div className="order-1 lg:order-2">
-            <p className="text-sm font-bold tracking-widest mb-4">THE WORKOUT</p>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-none">
-              JOIN THE HUSTLE
-            </h2>
-            <p className="text-lg mb-8 text-foreground/90">
-              BlazeHouse isn't a fitness trend. It's science, and it works.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-foreground text-background px-10 py-4 font-bold text-sm tracking-widest hover:bg-primary transition-all">
-                EXPLORE THE WORKOUT
-              </button>
-              <button className="border-2 border-foreground px-10 py-4 font-bold text-sm tracking-widest hover:bg-foreground hover:text-background transition-all">
-                NEW HERE?
-              </button>
-            </div>
+            <MojitoVariant id="join-the-hustle">
+              <p className="text-sm font-bold tracking-widest mb-4">THE WORKOUT</p>
+              <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-none">
+                JOIN THE HUSTLE
+              </h2>
+              <p className="text-lg mb-8 text-foreground/90">
+                BlazeHouse isn't a fitness trend. It's science, and it works.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-foreground text-background px-10 py-4 font-bold text-sm tracking-widest hover:bg-primary transition-all">
+                  EXPLORE THE WORKOUT
+                </button>
+                <button className="border-2 border-foreground px-10 py-4 font-bold text-sm tracking-widest hover:bg-foreground hover:text-background transition-all">
+                  NEW HERE?
+                </button>
+              </div>
+            </MojitoVariant>
           </div>
         </div>
 

@@ -10,28 +10,25 @@ import Index from "./pages/Index";
 import BookNow from "./pages/BookNow";
 import BuyClasses from "./pages/BuyClasses";
 import NotFound from "./pages/NotFound";
-import { MojitoVariant } from '@mojito-ai/react';
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <MojitoVariant id="entire-website">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/book-now" element={<BookNow />} />
-            <Route path="/buy-classes" element={<BuyClasses />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </MojitoVariant>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/book-now" element={<BookNow />} />
+          <Route path="/buy-classes" element={<BuyClasses />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export default App;
