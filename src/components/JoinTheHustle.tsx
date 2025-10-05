@@ -12,7 +12,7 @@ const JoinTheHustle = () => {
               src={community}
               alt="BlazeHouse Community"
               className="w-full h-auto"
-              />
+            />
           </div>
 
           {/* Content */}
